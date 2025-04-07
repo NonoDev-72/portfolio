@@ -1,0 +1,16 @@
+{
+   "locales": [
+        {
+            "key": "ES",
+            "literals": {
+                "home_content_description": "¡Hola! Soy Juan Antonio Bedmar, un apasionado Programador Full Stack con experiencia en el desarrollo de aplicaciones web y móviles. Me fascina el mundo del desarrollo de software por todo lo que se puede llegar a lograr con paciencia y dedicación. Mi objetivo es mantenerme en constante aprendizaje para ofrecer productos tecnológicos de calidad que resuelvan problemas reales y aporten valor."
+            }
+        },
+        {
+            "key": "EN",
+            "literals": {
+                "home_content_description": "Hello! I'm Juan Antonio Bedmar, a passionate Full-Stack programmer with experience developing web and mobile applications. I'm fascinated by the world of software development because of what can be achieved with patience and dedication. My goal is to constantly learn to deliver quality technology products that solve real problems and add value."
+            }
+        }
+   ]
+}
