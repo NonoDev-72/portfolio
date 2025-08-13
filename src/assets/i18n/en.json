@@ -1,0 +1,36 @@
+{
+    "header": {
+        "home": "Home",
+        "projects": "Projects",
+        "about": "About Me",
+        "contact": "Contact"
+    },
+    "home": {
+        "title": "App Developer",
+        "subtitle": "Hello 👋, I am",
+        "subtitle2": "welcome to my portfolio.",
+        "subtitlelink": "Juan Antonio Bedmar González",
+        "description": "I am a mobile developer specialized in creating native and cross-platform applications for Android and iOS. My approach combines intuitive design, optimized performance, and a smooth user experience. Throughout my career, I have worked on projects ranging from startups to enterprise solutions, always aiming to transform ideas into functional and scalable digital products.",
+        "titleProfesional": "My Professional Career",
+        "skills": "Skills",
+        "personalAttributes": "Personal Attributes",
+        "personalAttributesOptions": {
+            "teamwork": "Team Work",
+            "communication": "Communication",
+            "responsibility": "Responsibility",
+            "adaptability": "Adaptability",
+            "criticalThinking": "Critical Thinking",
+            "proactivity": "Proactivity"
+        },
+        "bannerTitle": "Specialized in mobile applications",
+        "bannerDescription": "Transforming ideas into native and cross-platform apps",
+        "timeline": {
+            "p1": "Android and iOS App Developer",
+            "p2": "Android and React Developer"
+        }
+    },
+    "projects": {
+        "title": "Projects",
+        "empty": "No projects found"
+    }
+}

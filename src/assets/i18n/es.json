@@ -1,0 +1,36 @@
+{
+    "header":{
+        "home": "Inicio",
+        "projects": "Proyectos",
+        "about": "Acerca de mí",
+        "contact": "Contacto"
+    },
+    "home": {
+        "title": "Desarrollador de Aplicaciones",
+        "subtitle": "Hola 👋, soy",
+        "subtitle2": "bienvenido a mi portfolio.",
+        "subtitlelink": "Juan Antonio Bedmar González",
+        "description": "Soy desarrollador mobile especializado en la creación de aplicaciones nativas y multiplataforma para Android e iOS. Mi enfoque combina diseño intuitivo, rendimiento optimizado y una experiencia de usuario fluida. A lo largo de mi trayectoria, he trabajado en proyectos que van desde startups hasta soluciones empresariales, siempre con el objetivo de transformar ideas en productos digitales funcionales y escalables.",
+        "titleProfesional": "Mi Carrera Profesional",
+        "skills": "Tecnologías que utilizo",
+        "personalAttributes": "Atributos personales",
+        "personalAttributesOptions": {
+            "teamwork": "Trabajo en equipo",
+            "communication": "Comunicación",
+            "responsibility": "Responsabilidad",
+            "adaptability": "Adaptabilidad",
+            "criticalThinking": "Pensamiento crítico",
+            "proactivity": "Proactividad"
+        },
+        "bannerTitle": "Especializado en aplicaciones móviles",
+        "bannerDescription": "Transformando ideas en aplicaciones nativas y multiplataforma",
+        "timeline" : {
+            "p1": "Desarrollador de App Android e iOS",
+            "p2": "Desarrollador Andorid y React"
+        }
+    },
+    "projects": {
+        "title": "Proyectos",
+        "empty": "No hay proyectos disponibles por ahora."
+    }
+}
