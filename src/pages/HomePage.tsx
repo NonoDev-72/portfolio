@@ -1,5 +1,5 @@
 import { useTranslation } from '../commons/hooks/useTranslation';
-import { Box, Heading, Spacer, Text, Image, Flex, HStack } from '@chakra-ui/react';
+import { Box, Heading, Spacer, Text, Flex, HStack, useColorModeValue, Link } from '@chakra-ui/react';
 import Skills from '../components/Skils';
 import PersonalAttributes from '../components/PersonalAttributes';
 import { NavLink } from 'react-router-dom';
@@ -18,7 +18,7 @@ const HomePage = () => {
                     <Text fontSize="md" color="gray.600">
                         {t('home.subtitle')}
                     </Text>
-                    <Text as={NavLink} to="/about">
+                    <Text as={NavLink} _hover={{ color: useColorModeValue("brand.accent", "brand.neon") }} to="/about">
                         {t('home.subtitlelink')}
                     </Text>
                     <Text fontSize="md" color="gray.600">

@@ -4,6 +4,7 @@ import Header from './components/HeaderHome';
 import Footer from './components/Footer';
 import NotFoundPage from './pages/NotFoundPage';
 import MaintenancePage from './pages/MaintenancePage';
+import HomePage from './pages/HomePage';
 
 const AppRoutes = () => {
     return (
@@ -12,7 +13,7 @@ const AppRoutes = () => {
                 <Header />
                 <Box flex="1">
                     <Routes>
-                        <Route path="/" element={<MaintenancePage />} />
+                        <Route path="/" element={<HomePage />} />
                         <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                 </Box>

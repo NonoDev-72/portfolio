@@ -18,7 +18,7 @@ const colors = {
         light: '#F7F7FF',
         accentDark: '#4B4A9D',
         neonDark: '#00b368ff',
-        accentLight: '#D1D0FF',
+        accentLight: '#030303ff',
         accentTransparent: 'rgba(102, 100, 223, 0.8)',
         neonTransparent: 'rgba(0, 254, 155, 0.8)',
     },
