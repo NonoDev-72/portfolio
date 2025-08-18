@@ -1,11 +1,11 @@
 import { ChakraProvider } from '@chakra-ui/react'
-import AppRoutes from './routes.tsx'
+import AppRoutes from './routes'
 import theme from './theme'
-import { LanguageProvider } from './commons/context/LanguageContext.tsx'
-import Layout from './components/Layout.tsx'
+import { LanguageProvider } from './commons/context/LanguageContext'
+import Layout from './components/Layout'
 import { useColorMode } from '@chakra-ui/react'
 import { useEffect } from 'react'
-import { ConfigProvider } from './commons/context/ConfigContext.tsx'
+import { ConfigProvider } from './commons/context/ConfigContext'
 
 function App() {
   const { colorMode } = useColorMode()

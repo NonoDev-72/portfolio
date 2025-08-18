@@ -3,7 +3,6 @@ import {
     Drawer,
     DrawerOverlay,
     DrawerContent,
-    DrawerCloseButton,
     DrawerHeader,
     DrawerBody,
     VStack,
@@ -60,7 +59,6 @@ const MobileMenu = () => {
 
     const links = [
         { path: '/', label: 'header.home' },
-        { path: '/projects', label: 'header.projects' },
         { path: '/about', label: 'header.about' },
         { path: '/contact', label: 'header.contact' },
     ]
@@ -105,7 +103,6 @@ const MobileMenu = () => {
                                 </Box>
                             ))}
                             <LanguageSwitcher />
-                            
                         </VStack>
                     </DrawerBody>
                 </DrawerContent>

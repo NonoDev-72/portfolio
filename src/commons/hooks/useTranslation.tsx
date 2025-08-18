@@ -9,6 +9,7 @@ export const useTranslation = () => {
     const dictionary: Translations = language === 'es' ? es : en
 
     const t = (key: string): string => {
+        if (!key || key.trim() === '') return ""
         const keys = key.split('.')
         let result: any = dictionary
 

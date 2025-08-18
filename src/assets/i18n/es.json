@@ -1,5 +1,5 @@
 {
-    "header":{
+    "header": {
         "home": "Inicio",
         "projects": "Proyectos",
         "about": "Acerca de mí",
@@ -20,17 +20,90 @@
             "responsibility": "Responsabilidad",
             "adaptability": "Adaptabilidad",
             "criticalThinking": "Pensamiento crítico",
-            "proactivity": "Proactividad"
+            "proactivity": "Proactividad",
+            "creativity": "Creatividad"
         },
         "bannerTitle": "Especializado en aplicaciones móviles",
         "bannerDescription": "Transformando ideas en aplicaciones nativas y multiplataforma",
-        "timeline" : {
+        "timeline": {
             "p1": "Desarrollador de App Android e iOS",
-            "p2": "Desarrollador Andorid y React"
+            "p2": "Desarrollador Android y React",
+            "p1e": "Estudiante de DAM"
+        },
+        "footer": {
+            "text": "© [change] Juan Antonio Bedmar González. Todos los derechos reservados."
         }
+    },
+    "about": {
+        "title": "Acerca de mí",
+        "description": "Soy Juan Antonio, desarrollador de aplicaciones apasionado por crear soluciones digitales que mejoren la vida de las personas y empresas. Combino mi experiencia en programación con una mente curiosa y orientada a la innovación. Disfruto trabajando en equipo y aprendiendo nuevas tecnologías para mantener mis proyectos siempre actualizados.",
+        "passionsTitle": "Pasiones y Aficiones",
+        "passionsText": "Me apasiona la tecnología, la música y el deporte. En mi tiempo libre disfruto de la música, el cine y el deporte, lo que me ayuda a mantener un equilibrio saludable entre mi vida profesional y personal. Creo firmemente que estas pasiones enriquecen mi creatividad y enfoque en el desarrollo de software."
     },
     "projects": {
         "title": "Proyectos",
         "empty": "No hay proyectos disponibles por ahora."
+    },
+    "contact": {
+        "button": "Contáctame",
+        "title": "Contacto",
+        "description": "Si deseas ponerte en contacto conmigo, rellena lo siguiente:",
+        "email": "jantonio.developer@gmail.com",
+        "formName": "Nombre",
+        "formNamePlaceholder": "Tu nombre",
+        "formEmail": "Correo electrónico",
+        "formEmailPlaceholder": "tu@email.com",
+        "formMessage": "Mensaje",
+        "formMessagePlaceholder": "Escribe tu mensaje aquí...",
+        "formSend": "Enviar",
+        "sentTitle": "¡Mensaje enviado!",
+        "sentDescription": "Gracias por contactarme. Te responderé pronto.",
+        "copied": "¡Correo copiado!",
+        "copiedInfo": "Puedes pegarlo en tu gestor de correo.",
+        "description2":"Si prefieres, también puedes enviarme un correo directamente a mi dirección:"
+    },
+    "common": {
+        "close": "Cerrar",
+        "skills": "Habilidades Aprendidas"
+    },
+    "timeline": {
+        "description": {
+            "indra": "En Indra, entré como desarrollador de una de las aplicaciones bancarias más utilizadas en España, CaixaBankNow. Donde he aprendido mucho sobre el trabajo Agile y además de nuevas estructuras de desarrollo en aplicaciones Android. Cuando pasarón 6 meses cambie de desarrollo a una nueva parte de la APP donde dirijo el desarrollo de la parte de Android. Además, he tenido la oportunidad de aprender React e integrarlo de forma híbrida en la aplicación, no obstante, también desarrollamos aplicaciones para el uso de los empleados de CaixaBank usando React.",
+            "h2tic": "En H2tic, me incorporé al mismo tiempo que estava con la formación, lo que me ayudó a expandir mis conocimientos en el desarrollo mobile. Aprendí a gestionar el trabajo, seguir diseños, y colaborar con otros desarrolladores de backend.",
+            "iesoretania": "Estudié Desarrollo de Aplicaciones Multiplataforma (DAM) en IES Oretania, donde empecé a desarrollar mis habilidades en programación y diseño de aplicaciones. Me dieron la oportunidad de participar en el programa DUAL por lo que al mismo tiempo que estudiaba trabajaba en proyectos reales."
+        },
+        "caught": {
+            "indra": [
+                "Kotlin",
+                "Java",
+                "React",
+                "JavaScript",
+                "Arquitecturas de Android",
+                "CI/CD",
+                "Control de versiones con GitLab"
+            ],
+            "h2tic": [
+                "Kotlin",
+                "Java",
+                "iOS",
+                "Swift",
+                "Backend",
+                "Firebase",
+                "Docker",
+                "Git"
+            ],
+            "iesoretania": [
+                "C",
+                "C++",
+                "C#",
+                "Java",
+                "JavaScript",
+                "HTML",
+                "CSS",
+                "Unity",
+                "PostgreSQL",
+                "Git"
+            ]
+        }
     }
 }

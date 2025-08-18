@@ -3,7 +3,7 @@ import { Box, Heading, Spacer, Text, Flex, HStack, useColorModeValue, Link } fro
 import Skills from '../components/Skils';
 import PersonalAttributes from '../components/PersonalAttributes';
 import { NavLink } from 'react-router-dom';
-import Timeline from '../components/TimeLine';
+import Timeline from '../components/Timeline';
 
 const HomePage = () => {
     const { t } = useTranslation();
@@ -14,17 +14,18 @@ const HomePage = () => {
             <Heading>{t('home.title')}</Heading>
             <Spacer h={20} />
             <Box>
-                <HStack>
-                    <Text fontSize="md" color="gray.600">
-                        {t('home.subtitle')}
-                    </Text>
-                    <Text as={NavLink} _hover={{ color: useColorModeValue("brand.accent", "brand.neon") }} to="/about">
-                        {t('home.subtitlelink')}
-                    </Text>
-                    <Text fontSize="md" color="gray.600">
-                        {t('home.subtitle2')}
-                    </Text>
-                </HStack>
+                <Text fontSize="md" color="gray.600">
+                    {t("home.subtitle")}{" "}
+                    <Link
+                        as={NavLink}
+                        to="/about"
+                        color={useColorModeValue("brand.accent", "brand.neon")}
+                        _hover={{ color: useColorModeValue("brand.accent", "brand.neon") }}
+                    >
+                        {t("home.subtitlelink")}
+                    </Link>{" "}
+                    {t("home.subtitle2")}
+                </Text>
                 <Text mt={1}>{t('home.description')}</Text>
                 <Spacer h={20} />
                 <Timeline />

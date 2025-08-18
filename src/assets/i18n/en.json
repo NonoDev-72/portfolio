@@ -12,7 +12,7 @@
         "subtitlelink": "Juan Antonio Bedmar González",
         "description": "I am a mobile developer specialized in creating native and cross-platform applications for Android and iOS. My approach combines intuitive design, optimized performance, and a smooth user experience. Throughout my career, I have worked on projects ranging from startups to enterprise solutions, always aiming to transform ideas into functional and scalable digital products.",
         "titleProfesional": "My Professional Career",
-        "skills": "Skills",
+        "skills": "Technologies I use",
         "personalAttributes": "Personal Attributes",
         "personalAttributesOptions": {
             "teamwork": "Team Work",
@@ -20,17 +20,90 @@
             "responsibility": "Responsibility",
             "adaptability": "Adaptability",
             "criticalThinking": "Critical Thinking",
-            "proactivity": "Proactivity"
+            "proactivity": "Proactivity",
+            "creativity": "Creativity"
         },
         "bannerTitle": "Specialized in mobile applications",
         "bannerDescription": "Transforming ideas into native and cross-platform apps",
         "timeline": {
             "p1": "Android and iOS App Developer",
-            "p2": "Android and React Developer"
+            "p2": "Android and React Developer",
+            "p1e": "DAM Student"
+        },
+        "footer": {
+            "text": "© [change] Juan Antonio Bedmar González. All rights reserved."
         }
+    },
+    "about": {
+        "title": "About Me",
+        "description": "I am Juan Antonio, an app developer passionate about creating digital solutions that improve the lives of people and businesses. I combine my programming experience with a curious and innovative mindset. I enjoy working in teams and learning new technologies to keep my projects always up to date.",
+        "passionsTitle": "Passions and Hobbies",
+        "passionsText": "I am passionate about technology, music, and sports. In my free time, I enjoy music, movies, and sports, which helps me maintain a healthy balance between my professional and personal life. I firmly believe these passions enrich my creativity and focus in software development."
     },
     "projects": {
         "title": "Projects",
-        "empty": "No projects found"
+        "empty": "No projects available for now."
+    },
+    "contact": {
+        "button": "Contact Me",
+        "title": "Contact",
+        "description": "If you want to get in touch with me, please fill out the following:",
+        "email": "jantonio.developer@gmail.com",
+        "formName": "Name",
+        "formNamePlaceholder": "Your name",
+        "formEmail": "Email",
+        "formEmailPlaceholder": "your@email.com",
+        "formMessage": "Message",
+        "formMessagePlaceholder": "Write your message here...",
+        "formSend": "Send",
+        "sentTitle": "Message sent!",
+        "sentDescription": "Thank you for contacting me. I will reply soon.",
+        "copied": "Email copied!",
+        "copiedInfo": "You can paste it in your email client.",
+        "description2": "If you prefer, you can also send me an email directly to my address:"
+    },
+    "common": {
+        "close": "Close",
+        "skills": "Skills Learned"
+    },
+    "timeline": {
+        "description": {
+            "indra": "At Indra, I joined as a developer for one of the most used banking apps in Spain, CaixaBankNow. There, I learned a lot about Agile work and new development structures in Android applications. After 6 months, I moved to a new part of the app where I lead the Android development. I also had the opportunity to learn React and integrate it in a hybrid way into the app. Additionally, we developed applications for CaixaBank employees using React.",
+            "h2tic": "At H2tic, I joined while I was still studying, which helped me expand my knowledge in mobile development. I learned to manage work, follow designs, and collaborate with other backend developers.",
+            "iesoretania": "I studied Multiplatform Application Development (DAM) at IES Oretania, where I began to develop my skills in programming and application design. I had the opportunity to participate in the DUAL program, so while I was studying, I was also working on real projects."
+        },
+        "caught": {
+            "indra": [
+                "Kotlin",
+                "Java",
+                "React",
+                "JavaScript",
+                "Android Architectures",
+                "CI/CD",
+                "Version control with GitLab"
+            ],
+            "h2tic": [
+                "Kotlin",
+                "Java",
+                "iOS",
+                "Swift",
+                "Backend",
+                "Firebase",
+                "Docker",
+                "Git"
+            ],
+            "iesoretania": [
+                "C",
+                "C++",
+                "C#",
+                "Java",
+                "JavaScript",
+                "HTML",
+                "CSS",
+                "Unity",
+                "PostgreSQL",
+                "Git"
+            ]
+        }
     }
 }

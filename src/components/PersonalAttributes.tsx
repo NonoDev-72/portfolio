@@ -9,6 +9,7 @@ const attributes = [
     'home.personalAttributesOptions.adaptability',
     'home.personalAttributesOptions.criticalThinking',
     'home.personalAttributesOptions.proactivity',
+    'home.personalAttributesOptions.creativity',
 ];
 
 const PersonalAttributes = () => {

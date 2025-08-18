@@ -1,7 +1,6 @@
 // theme/index.ts
 import { extendTheme, ThemeConfig } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
-import { tr } from 'framer-motion/client'
 
 // 1. Configuración del modo de color
 const config: ThemeConfig = {
