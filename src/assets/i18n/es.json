@@ -64,7 +64,8 @@
     },
     "common": {
         "close": "Cerrar",
-        "skills": "Habilidades Aprendidas"
+        "skills": "Habilidades Aprendidas",
+        "download_cv": "Descargar CV"
     },
     "timeline": {
         "description": {

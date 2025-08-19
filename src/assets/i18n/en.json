@@ -28,7 +28,7 @@
         "timeline": {
             "p1": "Android and iOS App Developer",
             "p2": "Android and React Developer",
-            "p1e": "DAM Student"
+            "p1e": "MAD Student"
         },
         "footer": {
             "text": "© [change] Juan Antonio Bedmar González. All rights reserved."
@@ -64,13 +64,14 @@
     },
     "common": {
         "close": "Close",
-        "skills": "Skills Learned"
+        "skills": "Skills Learned",
+        "download_cv": "Download CV"
     },
     "timeline": {
         "description": {
             "indra": "At Indra, I joined as a developer for one of the most used banking apps in Spain, CaixaBankNow. There, I learned a lot about Agile work and new development structures in Android applications. After 6 months, I moved to a new part of the app where I lead the Android development. I also had the opportunity to learn React and integrate it in a hybrid way into the app. Additionally, we developed applications for CaixaBank employees using React.",
             "h2tic": "At H2tic, I joined while I was still studying, which helped me expand my knowledge in mobile development. I learned to manage work, follow designs, and collaborate with other backend developers.",
-            "iesoretania": "I studied Multiplatform Application Development (DAM) at IES Oretania, where I began to develop my skills in programming and application design. I had the opportunity to participate in the DUAL program, so while I was studying, I was also working on real projects."
+            "iesoretania": "I studied Multiplatform Application Development (MAD) at IES Oretania, where I began to develop my skills in programming and application design. I had the opportunity to participate in the DUAL program, so while I was studying, I was also working on real projects."
         },
         "caught": {
             "indra": [

@@ -27,6 +27,7 @@ import {
     FaGithub,
     FaDocker,
 } from 'react-icons/fa';
+import { useTranslation } from '../commons/hooks/useTranslation';
 
 const technologies = [
     { name: 'Kotlin', color: '#A97BFF', icon: 'SiKotlin', url: 'https://kotlinlang.org/docs/home.html' },
@@ -69,6 +70,7 @@ const iconMap = {
 };
 
 const Skills = () => {
+    const { t } = useTranslation();
     const hoverText = useColorModeValue('white', 'white');
     const borderColor = useColorModeValue('brand.dark', 'brand.light');
 
@@ -80,8 +82,8 @@ const Skills = () => {
             boxShadow="md"
             flex="1"
             minW="300px">
-            <Heading size="md" mb={4} color={"brean.light"}>
-                Technologies I Use
+            <Heading size="md" mb={4} color={useColorModeValue('black', 'white')}>
+                {t('home.skills')}
             </Heading>
             <Wrap spacing={3}>
                 {technologies.map(({ name, color, icon, url }) => {

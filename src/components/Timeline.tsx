@@ -104,7 +104,7 @@ const Timeline = () => {
 
             <Flex overflowX="auto" wrap="nowrap" gap="6" padding="4">
                 {items.map((item, index) => (
-                    <MotionBox
+                    <Box
                         key={index}
                         minWidth="30%"
                         flexShrink={0}
@@ -115,10 +115,6 @@ const Timeline = () => {
                         _hover={{ bg: hoverColor(item.main), cursor: "pointer" }}
                         p="4"
                         shadow="md"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true, amount: 0.6 }}
                         onClick={() => {
                             setSelectedItem(item);
                             onOpen();
@@ -134,7 +130,7 @@ const Timeline = () => {
                         <Text fontSize="xs" mt="1">
                             {item.date}
                         </Text>
-                    </MotionBox>
+                    </Box>
                 ))}
             </Flex>
 

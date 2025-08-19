@@ -29,7 +29,7 @@ const PersonalAttributes = () => {
             minW="300px"
         >
             <Heading size="md" mb={4} color={textColor}>
-                Atributos Personales
+                {t('home.personalAttributes')}
             </Heading>
             <VStack align="start" spacing={3}>
                 {attributes.map((attr) => (

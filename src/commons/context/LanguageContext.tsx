@@ -25,6 +25,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 
     const toggleLanguage = () => {
         setLanguage(language === 'es' ? 'en' : 'es')
+        document.documentElement.lang = language === 'es' ? 'en' : 'es'
     }
 
     return (

@@ -9,20 +9,23 @@ import {
     useDisclosure,
     useColorModeValue,
     Box,
-    Link,
     Image,
-    Flex
+    Flex,
+    HStack,
+    Heading
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from '../../commons/hooks/useTranslation'
-import { use } from 'react'
 import LanguageSwitcher from '../LanguageSwitcher'
 import ColorModeSwitcher from '../ColorModeSwitcher'
+import { BsCloudDownload } from 'react-icons/bs'
+import { useLanguage } from '../../commons/context/LanguageContext'
 
 const MobileMenu = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { t } = useTranslation()
+    const { language } = useLanguage()
     const accentColor = useColorModeValue('brand.accent', 'brand.neon')
     const logoSrc = useColorModeValue('/logoLight.svg', '/logoDark.svg')
 
@@ -102,6 +105,15 @@ const MobileMenu = () => {
                                     {t(label)}
                                 </Box>
                             ))}
+                            <Box>
+                                <HStack as={"a"} spacing={2} alignItems={"center"} href={`/Cv-Juan-Antonio-Bedmar-${language}.pdf`} download _hover={{ color: useColorModeValue('brand.accentDark', 'brand.neonDark') }}>
+                                    <BsCloudDownload />
+                                    <Heading as="span" size="sm" fontWeight="medium" cursor="pointer" color={useColorModeValue('brand.accent', 'brand.neon')} _hover={{ color: useColorModeValue('brand.accentDark', 'brand.neonDark') }}>
+                                        {t('common.download_cv')}
+                                    </Heading>
+
+                                </HStack>
+                            </Box>
                             <LanguageSwitcher />
                         </VStack>
                     </DrawerBody>
