@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Flex, Text, Icon, useColorModeValue, useDisclosure, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, List, ListItem, ListIcon, Spacer } from "@chakra-ui/react";
+import { Box, Flex, Text, Icon, useColorModeValue, useDisclosure, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, List, ListItem, ListIcon, Spacer, HStack, SimpleGrid } from "@chakra-ui/react";
 import { FaBriefcase } from "react-icons/fa";
 import { PiStudentBold } from "react-icons/pi";
 import { motion } from "framer-motion";
@@ -101,11 +101,11 @@ const Timeline = () => {
             <Text fontSize="2xl" fontWeight="bold" textAlign="left" mb="4">
                 {t("home.titleProfesional")}
             </Text>
-
-            <Flex overflowX="auto" wrap="nowrap" gap="6" padding="4">
+            <HStack display={{ base: "block", lg: "flex" }} spacing={4}>
                 {items.map((item, index) => (
                     <Box
                         key={index}
+                        mt={4}
                         minWidth="30%"
                         flexShrink={0}
                         borderColor={getBorderColor(item.main)}
@@ -132,32 +132,42 @@ const Timeline = () => {
                         </Text>
                     </Box>
                 ))}
-            </Flex>
-
+            </HStack>
             <>
-                <Modal onClose={onClose} isOpen={isOpen} isCentered size="5xl">
+                <Modal onClose={onClose} isOpen={isOpen} isCentered size="2xl">
                     <ModalOverlay />
                     <ModalContent>
                         <ModalHeader>{t(selectedItem.title)}</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
-                            <Text>
-                                {t(selectedItem.description || "")}
-                            </Text>
+                            <Text>{t(selectedItem.description || "")}</Text>
                             <Spacer h={4} />
                             <Text fontWeight="bold" mb={2}>{t("common.skills")}</Text>
-                            <List spacing={2}>
+                            <Spacer h={2} />
+                            {/* Lista en 4 columnas con alineación a la izquierda */}
+                            <SimpleGrid columns={[1, 2, 4]} spacing={4}>
                                 {selectedItem?.caught?.map((skill, idx) => (
-                                    <ListItem key={idx}>
-                                        <ListIcon as={CheckCircleIcon} color="green.500" />
-                                        {skill}
-                                    </ListItem>
+                                    <Flex
+                                        key={idx}
+                                        direction="row"
+                                        align="center"
+                                        justify="flex-start"
+                                        textAlign="left"
+                                    >
+                                        <CheckCircleIcon color="green.500" mr={2} />
+                                        <Text>{skill}</Text>
+                                    </Flex>
                                 ))}
-                            </List>
+                            </SimpleGrid>
                         </ModalBody>
+
                         <ModalFooter>
-                            <Button onClick={onClose} _hover={{ bg: useColorModeValue("brand.accentDark", "brand.neonDark") }}
-                            >{t("common.close")}</Button>
+                            <Button
+                                onClick={onClose}
+                                _hover={{ bg: useColorModeValue("brand.accentDark", "brand.neonDark") }}
+                            >
+                                {t("common.close")}
+                            </Button>
                         </ModalFooter>
                     </ModalContent>
                 </Modal>

@@ -124,7 +124,7 @@ const ContactPage = () => {
                     {t('contact.email')}
                 </Text>
             </HStack>
-            
+            <Spacer h={10} />
             {/*
             Campos del formulario:
             - name: El nombre de la persona que envía el mensaje.

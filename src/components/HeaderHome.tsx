@@ -1,4 +1,4 @@
-import { Flex, Spacer, HStack, Box, Image, Heading, Center } from '@chakra-ui/react'
+import { Flex, HStack, Box, Image, Heading } from '@chakra-ui/react'
 import { useColorModeValue } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import LanguageSwitcher from './LanguageSwitcher'
@@ -7,7 +7,6 @@ import HeaderLinks from './HeaderLinks'
 import MobileMenu from './mobile/MobileMenu'
 import { useConfig } from '../commons/context/ConfigContext'
 import { BsCloudDownload } from "react-icons/bs";
-import { use } from 'react'
 import { useLanguage } from '../commons/context/LanguageContext'
 import { useTranslation } from '../commons/hooks/useTranslation'
 
