@@ -50,7 +50,7 @@ const Header = () => {
                         <HeaderLinks />
                         <HStack spacing={4} ml={4} pt={1}>
                             <Box>
-                                <HStack as={"a"} spacing={2} alignItems={"center"} href={`/Cv-Juan-Antonio-Bedmar-${language}.pdf`} download _hover={{ color: useColorModeValue('brand.accentDark', 'brand.neonDark') }}>
+                                <HStack as={"a"} spacing={2} alignItems={"center"} href={`/Cv-Juan-Antonio-Bedmar-${language}.pdf`} target="_blank" rel="noopener noreferrer" _hover={{ color: useColorModeValue('brand.accentDark', 'brand.neonDark') }}>
                                     <BsCloudDownload />
                                     <Heading as="span" size="sm" fontWeight="medium" cursor="pointer" color={useColorModeValue('brand.accent', 'brand.neon')} _hover={{ color: useColorModeValue('brand.accentDark', 'brand.neonDark') }}>
                                         {t('common.download_cv')}
