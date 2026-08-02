@@ -1,5 +1,5 @@
 import { m } from "framer-motion";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import CallApiService from "../../service/CallApiService";
 import { IoIosLocate } from "react-icons/io";
 import { useDeepSearch } from "../hooks/useJsonConfig";
@@ -19,7 +19,7 @@ const ConfigContext = createContext({
     setError: (error: boolean) => { },
 });
 
-export const ConfigProvider = ({ children }) => {
+export const ConfigProvider = ({ children }: { children: ReactNode }) => {
     const [notFoundActive, setNotFoundActive] = useState(false);
     const [maintenanceActive, setMaintenanceActive] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -28,22 +28,23 @@ export const ConfigProvider = ({ children }) => {
     const callApi = new CallApiService();
     const { getByPath, findByKey, data } = useDeepSearch(config);
 
-    useEffect(() => {
-        setIsLoading(true);
-        callApi.get('/0f94b0ab-edb6-490c-93c6-b515dd7d762a')
-            .then(data => {
-                setConfig(data);
-            })
-            .catch(() => {
-                setError(true);
-            }).finally(() => {
-                setIsLoading(false);
-            });
-    }, []);
+    // useEffect(() => {
+    //     setIsLoading(true);
+    //     callApi.get('/0f94b0ab-edb6-490c-93c6-b515dd7d762a')
+    //         .then(data => {
+    //             setConfig(data);
+    //         })
+    //         .catch(() => {
+    //             setError(true);
+    //         }).finally(() => {
+    //             setIsLoading(false);
+    //         });
+    // }, []);
+    
 
-    useEffect(() => {
-        setMaintenanceActive(getByPath(`features.${Constants.VITE_ENV}.development`) ? true : false);
-    }, [config])
+    // useEffect(() => {
+    //     setMaintenanceActive(getByPath(`features.${Constants.VITE_ENV}.development`) ? true : false);
+    // }, [config])
 
     return (
         <ConfigContext.Provider value={{ notFoundActive, setNotFoundActive, maintenanceActive, setMaintenanceActive, isLoading, setIsLoading, config, setConfig, error, setError }}>
