@@ -1,75 +1,47 @@
-// MaintenancePage.jsx
-import {
-    Box,
-    Heading,
-    Text,
-    Icon,
-    useColorModeValue,
-} from '@chakra-ui/react';
-import { FaTools, FaHome } from 'react-icons/fa';
+import { Box, Heading, Text, Icon, useColorModeValue } from '@chakra-ui/react';
+import { FaTools } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { useConfig } from '../commons/context/ConfigContext';
+import { useTranslation } from '../commons/hooks/useTranslation';
+import BlueprintFrame from '../components/landing/BlueprintFrame';
 
 const MotionBox = motion(Box);
-const MotionHeading = motion(Heading);
-const MotionText = motion(Text);
 
 const MaintenancePage = () => {
-    const iconColor = useColorModeValue('orange.400', 'orange.300');
+    const { t } = useTranslation();
+    const accent = useColorModeValue('brand.accent', 'brand.neon');
     const { setMaintenanceActive } = useConfig();
 
     useEffect(() => {
         setMaintenanceActive(true);
-        return () => {
-            setMaintenanceActive(false);
-        };
+        return () => { setMaintenanceActive(false); };
     }, [setMaintenanceActive]);
 
     return (
-        <MotionBox
-            textAlign="center"
-            height="100vh"
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            py={10}
-            px={6}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-        >
-            <motion.div
-                initial={{ rotate: -45, scale: 0 }}
-                animate={{ rotate: 0, scale: 1 }}
-                transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+        <Box height="100vh" display="flex" alignItems="center" justifyContent="center" px={6}>
+            <MotionBox
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
             >
-                <Icon as={FaTools} boxSize={'50px'} color={iconColor} />
-            </motion.div>
-
-            <MotionHeading
-                as="h2"
-                size="xl"
-                mt={6}
-                mb={2}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-            >
-                Página en mantenimiento
-            </MotionHeading>
-
-            <MotionText
-                color={'gray.500'}
-                mb={6}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-            >
-                Estamos trabajando para ajustar la web. Vuelve más tarde.
-            </MotionText>
-        </MotionBox>
+                <BlueprintFrame p={10} textAlign="center" maxW="480px">
+                    <motion.div
+                        initial={{ rotate: -45, scale: 0 }}
+                        animate={{ rotate: 0, scale: 1 }}
+                        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+                    >
+                        <Icon as={FaTools} boxSize="42px" color={accent} />
+                    </motion.div>
+                    <Heading as="h2" fontSize="clamp(28px, 4vw, 40px)" textTransform="uppercase" mt={6} mb={3}>
+                        {t('states.maintenance.title')}
+                    </Heading>
+                    <Text opacity={0.75}>
+                        {t('states.maintenance.body')}
+                    </Text>
+                </BlueprintFrame>
+            </MotionBox>
+        </Box>
     );
 };
 

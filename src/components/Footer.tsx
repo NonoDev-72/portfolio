@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Link, IconButton } from '@chakra-ui/react';
+import { Box, Flex, Text, Link, IconButton, useColorModeValue } from '@chakra-ui/react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { useConfig } from '../commons/context/ConfigContext';
 import { useTranslation } from '../commons/hooks/useTranslation';
@@ -7,14 +7,15 @@ import { useTranslation } from '../commons/hooks/useTranslation';
 const Footer = () => {
     const { notFoundActive, maintenanceActive } = useConfig();
     const { t } = useTranslation();
+    const divider = useColorModeValue('brand.divider', 'brand.dividerDark');
 
     return (
         notFoundActive || maintenanceActive ? null :
             <Box
-                as="footer" 
+                as="footer"
                 mt="auto"
                 borderTop="1px solid"
-                borderColor="gray.200" py={6} px={4} w="100%"
+                borderColor={divider} py={6} px={4} w="100%"
                 flexShrink={0}
                 maxW="100%"
             >

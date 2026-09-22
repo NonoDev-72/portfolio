@@ -5,6 +5,43 @@
         "about": "About Me",
         "contact": "Contact"
     },
+    "nav": {
+        "home": "Home",
+        "career": "Career",
+        "stack": "Stack",
+        "projects": "Projects",
+        "about": "About Me",
+        "contact": "Contact"
+    },
+    "hero": {
+        "kicker": "Profile",
+        "roles": ["Native Android", "Native iOS", "React & React Native", "Kotlin Multiplatform"],
+        "seework": "See projects"
+    },
+    "stats": {
+        "years": "Years developing",
+        "orgs": "Companies and schools",
+        "tech": "Technologies in use",
+        "platforms": "Native platforms"
+    },
+    "career": {
+        "title": "My professional career",
+        "current": "Current"
+    },
+    "stack": {
+        "title": "Technologies I use"
+    },
+    "states": {
+        "404": {
+            "title": "404 — Page not found",
+            "body": "The route you tried does not exist. Check the URL or go back home.",
+            "cta": "Back home"
+        },
+        "maintenance": {
+            "title": "Page under maintenance",
+            "body": "We are working on adjusting the site. Come back later."
+        }
+    },
     "home": {
         "title": "App Developer",
         "subtitle": "Hello 👋, I am",
@@ -42,7 +79,15 @@
     },
     "projects": {
         "title": "Projects",
-        "empty": "No projects available for now."
+        "empty": "No projects available for now.",
+        "placeholder": "Placeholder — send me the name, description and screenshots for each project and I will swap them in.",
+        "image": "Screenshot pending",
+        "body": "One or two sentences about the problem, your role in the project and the outcome.",
+        "cards": [
+            { "category": "Android · Kotlin", "title": "Project 01" },
+            { "category": "iOS · Swift", "title": "Project 02" },
+            { "category": "React · TypeScript", "title": "Project 03" }
+        ]
     },
     "contact": {
         "button": "Contact Me",

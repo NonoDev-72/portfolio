@@ -21,5 +21,17 @@ export const useTranslation = () => {
         return result
     }
 
-    return { t }
+    const tList = <T,>(key: string): T[] => {
+        const keys = key.split('.')
+        let result: any = dictionary
+
+        for (const k of keys) {
+            result = result?.[k]
+            if (result === undefined) return []
+        }
+
+        return Array.isArray(result) ? result : []
+    }
+
+    return { t, tList }
 }

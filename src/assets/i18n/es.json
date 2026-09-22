@@ -5,6 +5,43 @@
         "about": "Acerca de mí",
         "contact": "Contacto"
     },
+    "nav": {
+        "home": "Inicio",
+        "career": "Trayectoria",
+        "stack": "Stack",
+        "projects": "Proyectos",
+        "about": "Acerca de mí",
+        "contact": "Contacto"
+    },
+    "hero": {
+        "kicker": "Perfil",
+        "roles": ["Android nativo", "iOS nativo", "React & React Native", "Kotlin Multiplatform"],
+        "seework": "Ver proyectos"
+    },
+    "stats": {
+        "years": "Años desarrollando",
+        "orgs": "Empresas y centros",
+        "tech": "Tecnologías en uso",
+        "platforms": "Plataformas nativas"
+    },
+    "career": {
+        "title": "Mi carrera profesional",
+        "current": "Actual"
+    },
+    "stack": {
+        "title": "Tecnologías que utilizo"
+    },
+    "states": {
+        "404": {
+            "title": "404 — Página no encontrada",
+            "body": "La ruta que has intentado no existe. Verifica la URL o vuelve al inicio.",
+            "cta": "Volver al inicio"
+        },
+        "maintenance": {
+            "title": "Página en mantenimiento",
+            "body": "Estamos trabajando para ajustar la web. Vuelve más tarde."
+        }
+    },
     "home": {
         "title": "Desarrollador de Aplicaciones",
         "subtitle": "Hola 👋, soy",
@@ -42,7 +79,15 @@
     },
     "projects": {
         "title": "Proyectos",
-        "empty": "No hay proyectos disponibles por ahora."
+        "empty": "No hay proyectos disponibles por ahora.",
+        "placeholder": "Marcador de posición — envíame el nombre, la descripción y las capturas de cada proyecto y los sustituyo.",
+        "image": "Captura pendiente",
+        "body": "Una o dos frases sobre el problema, tu papel en el proyecto y el resultado.",
+        "cards": [
+            { "category": "Android · Kotlin", "title": "Proyecto 01" },
+            { "category": "iOS · Swift", "title": "Proyecto 02" },
+            { "category": "React · TypeScript", "title": "Proyecto 03" }
+        ]
     },
     "contact": {
         "button": "Contáctame",

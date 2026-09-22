@@ -1,6 +1,6 @@
-import React from 'react';
-import { Box, Heading, VStack, Text, useColorModeValue } from '@chakra-ui/react';
+import { VStack, Text, Heading, useColorModeValue } from '@chakra-ui/react';
 import { useTranslation } from '../commons/hooks/useTranslation';
+import BlueprintFrame from './landing/BlueprintFrame';
 
 const attributes = [
     'home.personalAttributesOptions.teamwork',
@@ -14,31 +14,22 @@ const attributes = [
 
 const PersonalAttributes = () => {
     const { t } = useTranslation();
-    const textColor = useColorModeValue('gray.800', 'gray.100');
-    const borderColor = useColorModeValue('brand.dark', 'brand.light');
-    
+    const accent = useColorModeValue('brand.accent', 'brand.neon');
 
     return (
-        <Box
-            p={6}
-            borderRadius="2xl"
-            borderColor={borderColor}
-            borderWidth="2px"
-            boxShadow="md"
-            flex="1"
-            minW="300px"
-        >
-            <Heading size="md" mb={4} color={textColor}>
+        <BlueprintFrame p={6} flex="0.8" minW="280px">
+            <Heading as="h3" fontSize="20px" mb={4} textTransform="uppercase" letterSpacing=".06em">
                 {t('home.personalAttributes')}
             </Heading>
             <VStack align="start" spacing={3}>
                 {attributes.map((attr) => (
-                    <Text key={attr} fontSize="sm" color={textColor}>
-                        • {t(attr)}
+                    <Text key={attr} fontSize="15px" display="flex" gap={2}>
+                        <Text as="span" color={accent}>+</Text>
+                        {t(attr)}
                     </Text>
                 ))}
             </VStack>
-        </Box>
+        </BlueprintFrame>
     );
 };
 
