@@ -1,8 +1,11 @@
 import { Box, HStack, useColorModeValue } from '@chakra-ui/react'
 import { useTranslation } from '../commons/hooks/useTranslation'
+import { useConfig } from '../commons/context/ConfigContext'
+import { navLinks } from '../commons/utils/navLinks'
 
 const HeaderLinks = () => {
     const { t } = useTranslation()
+    const { isBlocked } = useConfig()
     const accentColor = useColorModeValue('brand.accent', 'brand.neon')
 
     const linkStyles = {
@@ -16,14 +19,7 @@ const HeaderLinks = () => {
         _after: { content: '""', position: 'absolute', bottom: '-2px', left: 0, width: '0', height: '1px', bg: accentColor, transition: 'width 0.3s ease' },
     }
 
-    const links = [
-        { href: '#inicio', label: 'nav.home' },
-        { href: '#trayectoria', label: 'nav.career' },
-        { href: '#stack', label: 'nav.stack' },
-        { href: '#proyectos', label: 'nav.projects' },
-        { href: '#sobre-mi', label: 'nav.about' },
-        { href: '#contacto', label: 'nav.contact' },
-    ]
+    const links = navLinks.filter(({ section }) => !isBlocked(section))
 
     return (
         <HStack spacing={6} px={4} pt={1}>

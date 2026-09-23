@@ -19,10 +19,13 @@ import LanguageSwitcher from '../LanguageSwitcher'
 import ColorModeSwitcher from '../ColorModeSwitcher'
 import { BsCloudDownload } from 'react-icons/bs'
 import { useLanguage } from '../../commons/context/LanguageContext'
+import { useConfig } from '../../commons/context/ConfigContext'
+import { navLinks } from '../../commons/utils/navLinks'
 
 const MobileMenu = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { t } = useTranslation()
+    const { isBlocked } = useConfig()
     const { language } = useLanguage()
     const accentColor = useColorModeValue('brand.accent', 'brand.neon')
     const divider = useColorModeValue('brand.divider', 'brand.dividerDark')
@@ -53,14 +56,7 @@ const MobileMenu = () => {
         },
     }
 
-    const links = [
-        { href: '#inicio', label: 'nav.home' },
-        { href: '#trayectoria', label: 'nav.career' },
-        { href: '#stack', label: 'nav.stack' },
-        { href: '#proyectos', label: 'nav.projects' },
-        { href: '#sobre-mi', label: 'nav.about' },
-        { href: '#contacto', label: 'nav.contact' },
-    ]
+    const links = navLinks.filter(({ section }) => !isBlocked(section))
 
     return (
         <>

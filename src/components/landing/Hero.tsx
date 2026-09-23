@@ -3,9 +3,11 @@ import { useTranslation } from '../../commons/hooks/useTranslation';
 import { useTypewriter } from '../../commons/hooks/useTypewriter';
 import BlueprintFrame from './BlueprintFrame';
 import Reveal from './Reveal';
+import { useConfig } from '../../commons/context/ConfigContext';
 
 const Hero = () => {
     const { t, tList } = useTranslation();
+    const { isBlocked } = useConfig();
     const roles = tList<string>('hero.roles');
     const typed = useTypewriter(roles);
     const accent = useColorModeValue('brand.accent', 'brand.neon');
@@ -51,12 +53,16 @@ const Hero = () => {
                         {t('home.description')}
                     </Text>
                     <Box display="flex" gap={4} mt={9} flexWrap="wrap">
-                        <Button as="a" href="#contacto" variant="solid" px={7} py={6} fontSize="14px">
-                            {t('contact.button')}
-                        </Button>
-                        <Button as="a" href="#proyectos" variant="outline" borderColor={accent} color={accent} px={7} py={6} fontSize="14px" borderRadius={0}>
-                            {t('hero.seework')}
-                        </Button>
+                        {!isBlocked('contact') && (
+                            <Button as="a" href="#contacto" variant="solid" px={7} py={6} fontSize="14px">
+                                {t('contact.button')}
+                            </Button>
+                        )}
+                        {!isBlocked('projects') && (
+                            <Button as="a" href="#proyectos" variant="outline" borderColor={accent} color={accent} px={7} py={6} fontSize="14px" borderRadius={0}>
+                                {t('hero.seework')}
+                            </Button>
+                        )}
                     </Box>
                 </Reveal>
                 <Reveal delay={0.07}>
