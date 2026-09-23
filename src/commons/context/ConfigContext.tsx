@@ -48,7 +48,7 @@ export const getStats = (config: AppManagerConfig | null): Stat[] => {
 
 const ConfigContext = createContext({
     appManagerClient: appManagerClient,
-    isBlocked: (_section: string) => false,
+    isBlocked: (_section: string): boolean => false,
     notFoundActive: false,
     setNotFoundActive: (active: boolean) => { },
     maintenanceActive: false,

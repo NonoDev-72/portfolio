@@ -1,13 +1,22 @@
+# syntax=docker/dockerfile:1
 FROM node:20-alpine AS build
 WORKDIR /app
 
-COPY package.json package-lock.json ./
-RUN npm ci
+COPY package.json package-lock.json .npmrc ./
+
+# Private registry token comes from a BuildKit secret so it never lands in an image layer.
+RUN --mount=type=secret,id=NPM_EXPOZCODE_TOKEN \
+    export NPM_EXPOZCODE_TOKEN=$(cat /run/secrets/NPM_EXPOZCODE_TOKEN) && \
+    npm ci
 
 COPY . .
 
 ARG VITE_ENV=pro
-ENV VITE_ENV=$VITE_ENV
+ARG VITE_APP_MANAGER_BASE_URL
+ARG VITE_APP_MANAGER_TOKEN
+ENV VITE_ENV=$VITE_ENV \
+    VITE_APP_MANAGER_BASE_URL=$VITE_APP_MANAGER_BASE_URL \
+    VITE_APP_MANAGER_TOKEN=$VITE_APP_MANAGER_TOKEN
 RUN npm run build
 
 FROM nginx:1.27-alpine AS runtime
