@@ -108,6 +108,7 @@
         "description2": "If you prefer, you can also send me an email directly to my address:"
     },
     "common": {
+        "scrollTop": "Back to top",
         "close": "Close",
         "skills": "Skills Learned",
         "download_cv": "Download CV"

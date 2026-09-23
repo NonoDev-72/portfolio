@@ -108,6 +108,7 @@
         "description2":"Si prefieres, también puedes enviarme un correo directamente a mi dirección:"
     },
     "common": {
+        "scrollTop": "Volver arriba",
         "close": "Cerrar",
         "skills": "Habilidades Aprendidas",
         "download_cv": "Descargar CV"
