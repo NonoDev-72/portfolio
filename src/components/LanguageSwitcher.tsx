@@ -1,51 +1,39 @@
-import {
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
-    Button,
-    useColorModeValue,
-} from '@chakra-ui/react'
-import { ChevronDownIcon } from '@chakra-ui/icons'
+import { Flex, Button, useColorModeValue } from '@chakra-ui/react'
 import { useLanguage } from '../commons/context/LanguageContext'
 
 const LanguageSwitcher = () => {
     const { language, setLanguage } = useLanguage()
+    const divider = useColorModeValue('brand.divider', 'brand.dividerDark')
+    const accent = useColorModeValue('brand.accent', 'brand.neon')
+    const pageBg = useColorModeValue('brand.light', 'brand.dark')
+    const text = useColorModeValue('brand.dark', 'brand.light')
 
-    const currentLabel = language === 'en' ? '🇺🇸 English' : '🇪🇸 Español'
+    const segments: Array<{ code: 'es' | 'en'; label: string }> = [
+        { code: 'es', label: 'ES' },
+        { code: 'en', label: 'EN' },
+    ]
 
     return (
-        <Menu>
-            <MenuButton
-                as={Button}
-                rightIcon={<ChevronDownIcon />}
-                variant="ghost"
-                size="sm"
-                color={useColorModeValue('brand.accent', 'brand.neon')}
-            >
-                {currentLabel}
-            </MenuButton>
-            <MenuList>
-                <MenuItem
-                    onClick={() => setLanguage('es')}
-                    fontWeight={language === 'es' ? 'bold' : 'normal'}
-                    _hover={{ bg: useColorModeValue('brand.neonTransparent', 'brand.accentTransparent')}}
-                    bg={language === 'es' ? useColorModeValue('gray.100', 'gray.700') : 'transparent'}
-                    color={useColorModeValue('brand.accentDark', 'brand.neonDark')}
+        <Flex border="1px solid" borderColor={divider}>
+            {segments.map(({ code, label }, i) => (
+                <Button
+                    key={code}
+                    onClick={() => setLanguage(code)}
+                    variant="unstyled"
+                    borderRadius={0}
+                    borderLeft={i === 0 ? 'none' : '1px solid'}
+                    borderColor={divider}
+                    fontSize="12px"
+                    px={3}
+                    h="32px"
+                    minW="auto"
+                    bg={language === code ? accent : 'transparent'}
+                    color={language === code ? pageBg : text}
                 >
-                    🇪🇸 Español
-                </MenuItem>
-                <MenuItem
-                    onClick={() => setLanguage('en')}
-                    fontWeight={language === 'en' ? 'bold' : 'normal'}
-                    _hover={{ bg: useColorModeValue('brand.neonTransparent', 'brand.accentTransparent') }}
-                    bg={language === 'en' ? useColorModeValue('gray.100', 'gray.700') : 'transparent'}
-                    color={useColorModeValue('brand.accentDark', 'brand.neonDark')}
-                >
-                    🇺🇸 English
-                </MenuItem>
-            </MenuList>
-        </Menu>
+                    {label}
+                </Button>
+            ))}
+        </Flex>
     )
 }
 

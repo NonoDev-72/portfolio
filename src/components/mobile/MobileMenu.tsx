@@ -11,22 +11,24 @@ import {
     Box,
     Image,
     Flex,
-    HStack,
-    Heading
+    Button
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
-import { NavLink } from 'react-router-dom'
 import { useTranslation } from '../../commons/hooks/useTranslation'
 import LanguageSwitcher from '../LanguageSwitcher'
 import ColorModeSwitcher from '../ColorModeSwitcher'
 import { BsCloudDownload } from 'react-icons/bs'
 import { useLanguage } from '../../commons/context/LanguageContext'
+import { useConfig } from '../../commons/context/ConfigContext'
+import { navLinks } from '../../commons/utils/navLinks'
 
 const MobileMenu = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { t } = useTranslation()
+    const { isBlocked } = useConfig()
     const { language } = useLanguage()
     const accentColor = useColorModeValue('brand.accent', 'brand.neon')
+    const divider = useColorModeValue('brand.divider', 'brand.dividerDark')
     const logoSrc = useColorModeValue('/logoLight.svg', '/logoDark.svg')
 
     const linkStyles = {
@@ -48,23 +50,13 @@ const MobileMenu = () => {
             bottom: '-2px',
             left: 0,
             width: '0',
-            height: '2px',
+            height: '1px',
             bg: accentColor,
             transition: 'width 0.3s ease',
         },
-        '&.active': {
-            color: accentColor,
-            _after: {
-                width: '100%',
-            },
-        },
     }
 
-    const links = [
-        { path: '/', label: 'header.home' },
-        { path: '/about', label: 'header.about' },
-        { path: '/contact', label: 'header.contact' },
-    ]
+    const links = navLinks.filter(({ section }) => !isBlocked(section))
 
     return (
         <>
@@ -80,40 +72,45 @@ const MobileMenu = () => {
                 <DrawerContent>
                     <DrawerHeader>
                         <Flex align="center" justify="space-between">
-                            <NavLink to="/">
+                            <Box as="a" href="#inicio" onClick={onClose}>
                                 <Image
                                     src={logoSrc}
                                     alt="Logo"
-                                    boxSize="40px"
+                                    boxSize="34px"
                                     objectFit="contain"
                                     draggable={false}
-                                    onClick={onClose}
                                 />
-                            </NavLink>
+                            </Box>
                             <ColorModeSwitcher />
                         </Flex>
                     </DrawerHeader>
                     <DrawerBody>
                         <VStack align="start" spacing={4}>
-                            {links.map(({ path, label }) => (
+                            {links.map(({ href, label }) => (
                                 <Box
-                                    as={NavLink}
-                                    to={path}
+                                    key={href}
+                                    as="a"
+                                    href={href}
                                     onClick={onClose}
                                     sx={linkStyles}
                                 >
                                     {t(label)}
                                 </Box>
                             ))}
-                            <Box>
-                                <HStack as={"a"} spacing={2} alignItems={"center"} href={`/Cv-Juan-Antonio-Bedmar-${language}.pdf`} download _hover={{ color: useColorModeValue('brand.accentDark', 'brand.neonDark') }}>
-                                    <BsCloudDownload />
-                                    <Heading as="span" size="sm" fontWeight="medium" cursor="pointer" color={useColorModeValue('brand.accent', 'brand.neon')} _hover={{ color: useColorModeValue('brand.accentDark', 'brand.neonDark') }}>
-                                        {t('common.download_cv')}
-                                    </Heading>
-
-                                </HStack>
-                            </Box>
+                            <Button
+                                as="a"
+                                href={`/Cv-Juan-Antonio-Bedmar-${language}.pdf`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                variant="outline"
+                                borderColor={divider}
+                                borderRadius={0}
+                                fontSize="13px"
+                                leftIcon={<BsCloudDownload />}
+                                _hover={{ borderColor: accentColor, color: accentColor }}
+                            >
+                                {t('common.download_cv')}
+                            </Button>
                             <LanguageSwitcher />
                         </VStack>
                     </DrawerBody>

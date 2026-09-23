@@ -1,20 +1,62 @@
-import { m } from "framer-motion";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import CallApiService from "../../service/CallApiService";
-import { IoIosLocate } from "react-icons/io";
-import { useDeepSearch } from "../hooks/useJsonConfig";
+import { AppManagerClient, AppManagerConfig } from "@expozcode/app-manager-sdk";
 import Constants from "../utils/Constants";
 
+export const appManagerClient = new AppManagerClient({
+    baseUrl: Constants.APP_MANAGER_BASE_URL,
+    token: Constants.APP_MANAGER_TOKEN,
+    environment: Constants.VITE_ENV,
+});
+
+export type Project = {
+    id: string;
+    category: string;
+    title: string;
+    description: string;
+    image?: string;
+    link?: string;
+    stack?: string[];
+    featured?: boolean;
+    order?: number;
+};
+
+export const getProjects = (config: AppManagerConfig | null): Project[] => {
+    if (!config) return [];
+    const projects = appManagerClient.getJSON<Project[]>(config, 'projects', []);
+    return [...projects].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+};
+
+export type Stat = {
+    value: number;
+    labelKey: string;
+    suffix?: string;
+};
+
+const DEFAULT_STATS: Stat[] = [
+    { value: 5, labelKey: 'stats.years', suffix: '+' },
+    { value: 3, labelKey: 'stats.orgs' },
+    { value: 17, labelKey: 'stats.tech' },
+    { value: 2, labelKey: 'stats.platforms' },
+];
+
+// `stats` config key: [{ "value": 5, "suffix": "+", "labelKey": "stats.years" }, ...]. Falls back to the defaults if absent.
+export const getStats = (config: AppManagerConfig | null): Stat[] => {
+    if (!config) return DEFAULT_STATS;
+    const stats = appManagerClient.getJSON<Stat[]>(config, 'stats', DEFAULT_STATS);
+    return Array.isArray(stats) && stats.length ? stats : DEFAULT_STATS;
+};
 
 const ConfigContext = createContext({
+    appManagerClient: appManagerClient,
+    isBlocked: (_section: string) => false,
     notFoundActive: false,
     setNotFoundActive: (active: boolean) => { },
     maintenanceActive: false,
     setMaintenanceActive: (active: boolean) => { },
     isLoading: false,
     setIsLoading: (loading: boolean) => { },
-    config: null,
-    setConfig: (config: unknown) => { },
+    config: null as AppManagerConfig | null,
+    setConfig: (config: AppManagerConfig | null) => { },
     error: false,
     setError: (error: boolean) => { },
 });
@@ -23,31 +65,28 @@ export const ConfigProvider = ({ children }: { children: ReactNode }) => {
     const [notFoundActive, setNotFoundActive] = useState(false);
     const [maintenanceActive, setMaintenanceActive] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [config, setConfig] = useState<any | null>({});
+    const [config, setConfig] = useState<AppManagerConfig | null>(null);
     const [error, setError] = useState<boolean>(false);
-    const callApi = new CallApiService();
-    const { getByPath, findByKey, data } = useDeepSearch(config);
 
-    // useEffect(() => {
-    //     setIsLoading(true);
-    //     callApi.get('/0f94b0ab-edb6-490c-93c6-b515dd7d762a')
-    //         .then(data => {
-    //             setConfig(data);
-    //         })
-    //         .catch(() => {
-    //             setError(true);
-    //         }).finally(() => {
-    //             setIsLoading(false);
-    //         });
-    // }, []);
-    
+    useEffect(() => {
+        setIsLoading(true);
+        appManagerClient.fetchConfig()
+            .then(remoteConfig => {
+                setConfig(remoteConfig);
+                setMaintenanceActive(appManagerClient.isBlocked(remoteConfig, 'maintenance'));
+            })
+            .catch(() => {
+                setError(true);
+            }).finally(() => {
+                setIsLoading(false);
+            });
+    }, []);
 
-    // useEffect(() => {
-    //     setMaintenanceActive(getByPath(`features.${Constants.VITE_ENV}.development`) ? true : false);
-    // }, [config])
+    // A section with no flag (or no config yet) is not blocked.
+    const isBlocked = (section: string) => config ? appManagerClient.isBlocked(config, section) : false;
 
     return (
-        <ConfigContext.Provider value={{ notFoundActive, setNotFoundActive, maintenanceActive, setMaintenanceActive, isLoading, setIsLoading, config, setConfig, error, setError }}>
+        <ConfigContext.Provider value={{ appManagerClient, isBlocked, notFoundActive, setNotFoundActive, maintenanceActive, setMaintenanceActive, isLoading, setIsLoading, config, setConfig, error, setError }}>
             {children}
         </ConfigContext.Provider>
     );

@@ -8,18 +8,27 @@ const config: ThemeConfig = {
     useSystemColorMode: true,
 }
 
-// 2. Paleta de colores personalizada
+// 2. Paleta de colores personalizada (rediseño "blueprint": un único acento)
 const colors = {
     brand: {
-        dark: '#00041F',
-        neon: '#00FE9B',
-        accent: '#6664DF',
-        light: '#F7F7FF',
-        accentDark: '#4B4A9D',
-        neonDark: '#00b368ff',
-        accentLight: '#030303ff',
-        accentTransparent: 'rgba(102, 100, 223, 0.8)',
-        neonTransparent: 'rgba(0, 254, 155, 0.8)',
+        dark: '#1d1f20',
+        neon: '#94bce3',
+        accent: '#5980a6',
+        light: '#f2f2f3',
+        accentDark: '#416180',
+        neonDark: '#597ea3',
+        accentLight: '#eef6ff',
+        accentTransparent: 'rgba(89, 128, 166, 0.8)',
+        neonTransparent: 'rgba(148, 188, 227, 0.8)',
+        surface: '#1f2226',
+        surfaceLight: '#ffffff',
+        divider: 'rgba(29, 31, 32, 0.18)',
+        dividerDark: 'rgba(242, 243, 245, 0.20)',
+        accent100: '#eef6ff',
+        accent300: '#b5d9fd',
+        accent600: '#597ea3',
+        accent700: '#416180',
+        accent900: '#1d2d3d',
     },
     gray: {
         100: '#F7FAFC',
@@ -132,23 +141,28 @@ const colors = {
 
 // 3. Tipografías
 const fonts = {
-    heading: `'Poppins', sans-serif`,
-    body: `'Inter', sans-serif`,
+    heading: `'Barlow Condensed', sans-serif`,
+    body: `'Barlow', sans-serif`,
 }
 
 // 4. Estilos globales
 const styles = {
     global: (props: any) => ({
+        html: {
+            scrollBehavior: 'smooth',
+        },
+        '@keyframes pfblink': {
+            '50%': { opacity: 0 },
+        },
         body: {
             bg: mode(colors.brand.light, colors.brand.dark)(props),
             color: mode(colors.brand.dark, colors.brand.light)(props),
             overflowX: 'hidden',
         },
         a: {
-            color: mode(colors.brand.accent, colors.brand.neon)(props),
+            color: mode(colors.brand.accent700, colors.brand.neon)(props),
             _hover: {
-                textDecoration: 'underline',
-                color: colors.brand.neon,
+                color: colors.brand.accent,
             },
         },
     }),
@@ -158,15 +172,16 @@ const styles = {
 const components = {
     Button: {
         baseStyle: {
-            fontWeight: 'bold',
-            borderRadius: 'md',
+            fontWeight: 'semibold',
+            borderRadius: 0,
+            letterSpacing: '.02em',
         },
         variants: {
             solid: (props: any) => ({
                 bg: mode(colors.brand.accent, colors.brand.neon)(props),
-                color: mode(colors.brand.light, colors.brand.dark)(props),
+                color: mode('#ffffff', colors.brand.dark)(props),
                 _hover: {
-                    bg: mode(colors.brand.neon, colors.brand.accent)(props),
+                    bg: mode(colors.brand.accentDark, colors.brand.neonDark)(props),
                 },
             }),
             ghost: (props: any) => ({
@@ -178,9 +193,10 @@ const components = {
         },
     },
     Heading: {
-        baseStyle: {
-            color: colors.brand.accent,
-        },
+        baseStyle: (props: any) => ({
+            color: mode(colors.brand.accent, colors.brand.neon)(props),
+            fontFamily: `'Barlow Condensed', sans-serif`,
+        }),
     },
 }
 

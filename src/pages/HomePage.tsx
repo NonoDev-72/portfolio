@@ -1,49 +1,24 @@
-import { useTranslation } from '../commons/hooks/useTranslation';
-import { Box, Heading, Spacer, Text, Flex, HStack, useColorModeValue, Link } from '@chakra-ui/react';
-import Skills from '../components/Skils';
-import PersonalAttributes from '../components/PersonalAttributes';
-import { NavLink } from 'react-router-dom';
+import Hero from '../components/landing/Hero';
+import StatsBand from '../components/landing/StatsBand';
 import Timeline from '../components/Timeline';
+import StackSection from '../components/landing/StackSection';
+import ProjectsSection from '../components/landing/ProjectsSection';
+import AboutSection from '../components/landing/AboutSection';
+import ContactSection from '../components/landing/ContactSection';
+import { useConfig } from '../commons/context/ConfigContext';
 
+// Each section can be switched off from App Manager with a flag of the same name.
 const HomePage = () => {
-    const { t } = useTranslation();
-
+    const { isBlocked } = useConfig();
     return (
         <>
-            <Spacer h={20} />
-            <Heading>{t('home.title')}</Heading>
-            <Spacer h={20} />
-            <Box>
-                <Text fontSize="md" color="gray.600">
-                    {t("home.subtitle")}{" "}
-                    <Link
-                        as={NavLink}
-                        to="/about"
-                        color={useColorModeValue("brand.accent", "brand.neon")}
-                        _hover={{ color: useColorModeValue("brand.accent", "brand.neon") }}
-                    >
-                        {t("home.subtitlelink")}
-                    </Link>{" "}
-                    {t("home.subtitle2")}
-                </Text>
-                <Text mt={1}>{t('home.description')}</Text>
-                <Spacer h={20} />
-                <Timeline />
-                <Spacer h={20} />
-                <Flex
-                    direction={{ base: 'column', md: 'row' }}
-                    justify="space-between"
-                    align="stretch"
-                    gap={6}
-                    w="100%"
-                >
-                    <Box flex="1" minW="300px">
-                        <Skills />
-                    </Box>
-                    <PersonalAttributes />
-                </Flex>
-                <Spacer h={20} />
-            </Box>
+            {!isBlocked('hero') && <Hero />}
+            {!isBlocked('stats') && <StatsBand />}
+            {!isBlocked('timeline') && <Timeline />}
+            {!isBlocked('stack') && <StackSection />}
+            {!isBlocked('projects') && <ProjectsSection />}
+            {!isBlocked('about') && <AboutSection />}
+            {!isBlocked('contact') && <ContactSection />}
         </>
     );
 };

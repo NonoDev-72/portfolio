@@ -1,6 +1,4 @@
-import { Flex, HStack, Box, Image, Heading } from '@chakra-ui/react'
-import { useColorModeValue } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
+import { Flex, HStack, Box, Image, Button, useColorModeValue } from '@chakra-ui/react'
 import LanguageSwitcher from './LanguageSwitcher'
 import ColorModeSwitcher from './ColorModeSwitcher'
 import HeaderLinks from './HeaderLinks'
@@ -15,6 +13,8 @@ const Header = () => {
     const logoSrc = useColorModeValue('/logoLight.svg', '/logoDark.svg')
     const { language } = useLanguage()
     const { t } = useTranslation();
+    const divider = useColorModeValue('brand.divider', 'brand.dividerDark')
+    const accent = useColorModeValue('brand.accent', 'brand.neon')
 
     const { notFoundActive, maintenanceActive } = useConfig()
     return (
@@ -25,7 +25,7 @@ const Header = () => {
                     align="center"
                     py={4}
                     borderBottom="1px solid"
-                    borderColor="gray.200"
+                    borderColor={divider}
                     position="sticky"
                     top={0}
                     zIndex={1000}
@@ -38,26 +38,32 @@ const Header = () => {
                         w="100%"
                     >
                         {/* Logo */}
-                        <Link to="/">
+                        <Box as="a" href="#inicio">
                             <Image
                                 src={logoSrc}
                                 alt="Logo"
-                                boxSize="40px"
+                                boxSize="34px"
                                 objectFit="contain"
                                 draggable={false}
                             />
-                        </Link>
+                        </Box>
                         <HeaderLinks />
-                        <HStack spacing={4} ml={4} pt={1}>
-                            <Box>
-                                <HStack as={"a"} spacing={2} alignItems={"center"} href={`/Cv-Juan-Antonio-Bedmar-${language}.pdf`} target="_blank" rel="noopener noreferrer" _hover={{ color: useColorModeValue('brand.accentDark', 'brand.neonDark') }}>
-                                    <BsCloudDownload />
-                                    <Heading as="span" size="sm" fontWeight="medium" cursor="pointer" color={useColorModeValue('brand.accent', 'brand.neon')} _hover={{ color: useColorModeValue('brand.accentDark', 'brand.neonDark') }}>
-                                        {t('common.download_cv')}
-                                    </Heading>
-
-                                </HStack>
-                            </Box>
+                        <HStack spacing={4} ml={4}>
+                            <Button
+                                as="a"
+                                href={`/Cv-Juan-Antonio-Bedmar-${language}.pdf`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                variant="outline"
+                                borderColor={divider}
+                                borderRadius={0}
+                                fontSize="13px"
+                                fontWeight="medium"
+                                leftIcon={<BsCloudDownload />}
+                                _hover={{ borderColor: accent, color: accent }}
+                            >
+                                {t('common.download_cv')}
+                            </Button>
                             <LanguageSwitcher />
                             <ColorModeSwitcher />
                         </HStack>

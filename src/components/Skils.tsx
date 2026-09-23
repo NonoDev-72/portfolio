@@ -1,10 +1,8 @@
 import React from 'react';
 import {
     Box,
-    Heading,
     Wrap,
     WrapItem,
-    Tag,
     Flex,
     Text,
     Link,
@@ -71,50 +69,35 @@ const iconMap = {
 
 const Skills = () => {
     const { t } = useTranslation();
-    const hoverText = useColorModeValue('white', 'white');
-    const borderColor = useColorModeValue('brand.dark', 'brand.light');
+    const divider = useColorModeValue('brand.divider', 'brand.dividerDark');
+    const accent = useColorModeValue('brand.accent', 'brand.neon');
+    const pageBg = useColorModeValue('brand.light', 'brand.dark');
+    const text = useColorModeValue('brand.dark', 'brand.light');
 
     return (
-        <Box p={6}
-            borderRadius="2xl"
-            borderColor={borderColor}
-            borderWidth="2px"
-            boxShadow="md"
-            flex="1"
-            minW="300px">
-            <Heading size="md" mb={4} color={useColorModeValue('black', 'white')}>
-                {t('home.skills')}
-            </Heading>
+        <Box flex="1.6" minW="300px">
             <Wrap spacing={3}>
-                {technologies.map(({ name, color, icon, url }) => {
+                {technologies.map(({ name, icon, url }) => {
                     const IconComponent = iconMap[icon];
                     return (
                         <WrapItem key={name}>
                             <Link href={url} isExternal _hover={{ textDecoration: 'none' }}>
-                                <Tag
-                                    size="lg"
-                                    borderRadius="full"
+                                <Flex
+                                    align="center"
+                                    gap={2}
                                     px={4}
-                                    py={2}
-                                    height="40px"
-                                    display="flex"
-                                    alignItems="center"
-                                    border={`2px solid ${color}`}
-                                    bg={color}
-                                    color={hoverText}
-                                    transition="all 0.2s ease"
-                                    _hover={{
-                                        bg: "transparent",
-                                        color: color,
-                                    }}
+                                    py={3}
+                                    border="1px solid"
+                                    borderColor={divider}
+                                    color={text}
+                                    transition="background .25s ease, color .25s ease, transform .25s ease"
+                                    _hover={{ bg: accent, color: pageBg, transform: 'translateY(-2px)' }}
                                 >
-                                    <Flex align="center" gap={2}>
-                                        {IconComponent && <Box as={IconComponent} boxSize="20px" />}
-                                        <Text fontSize="sm" fontWeight="medium" lineHeight="1">
-                                            {name}
-                                        </Text>
-                                    </Flex>
-                                </Tag>
+                                    {IconComponent && <Box as={IconComponent} boxSize="18px" />}
+                                    <Text fontSize="14px" fontWeight="medium" lineHeight="1">
+                                        {name}
+                                    </Text>
+                                </Flex>
                             </Link>
                         </WrapItem>
                     );

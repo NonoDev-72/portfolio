@@ -2,6 +2,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/HeaderHome';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import NotFoundPage from './pages/NotFoundPage';
 import MaintenancePage from './pages/MaintenancePage';
 import HomePage from './pages/HomePage';
@@ -28,6 +29,7 @@ const AppRoutes = () => {
                         </Routes>
                     </Box>
                     <Footer />
+                    <ScrollToTop />
                 </Flex>
             )}
         </BrowserRouter>

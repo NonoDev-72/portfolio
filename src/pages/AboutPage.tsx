@@ -1,10 +1,12 @@
 import { Heading, HStack, Spacer, Text, Image, Box, Button, Link, useColorModeValue, VStack } from "@chakra-ui/react";
 import { useTranslation } from "../commons/hooks/useTranslation";
-import { use } from "react";
+import { useConfig } from "../commons/context/ConfigContext";
 import { NavLink } from "react-router-dom";
 
 const AboutPage = () => {
     const { t } = useTranslation();
+    const { isBlocked } = useConfig();
+    const contactHover = { bg: useColorModeValue("brand.accentDark", "brand.neonDark"), textDecoration: "none", color: useColorModeValue("white", "black") };
     return (
         <>
             <Spacer h={20} />
@@ -16,11 +18,13 @@ const AboutPage = () => {
                     <Text>{t('about.description')}</Text>
                 </HStack>
                 <Spacer h={20} />
-                <Box textAlign="center">
-                    <Button as={NavLink} size="lg" _hover={{ bg: useColorModeValue("brand.accentDark", "brand.neonDark"), textDecoration: "none", color: useColorModeValue("white", "black") }} to="/contact">
-                        {t('contact.button')}
-                    </Button>
-                </Box>
+                {!isBlocked('contact') && (
+                    <Box textAlign="center">
+                        <Button as={NavLink} size="lg" _hover={contactHover} to="/contact">
+                            {t('contact.button')}
+                        </Button>
+                    </Box>
+                )}
             </Box>
 
             <Box display={{ base: 'block', md: 'none' }}>
@@ -29,11 +33,13 @@ const AboutPage = () => {
                     <Text>{t('about.description')}</Text>
                 </VStack>
                 <Spacer h={20} />
-                <Box textAlign="center">
-                    <Button as={NavLink} size="lg" _hover={{ bg: useColorModeValue("brand.accentDark", "brand.neonDark"), textDecoration: "none", color: useColorModeValue("white", "black") }} to="/contact">
-                        {t('contact.button')}
-                    </Button>
-                </Box>
+                {!isBlocked('contact') && (
+                    <Box textAlign="center">
+                        <Button as={NavLink} size="lg" _hover={contactHover} to="/contact">
+                            {t('contact.button')}
+                        </Button>
+                    </Box>
+                )}
             </Box>
 
             <Spacer h={10} />
