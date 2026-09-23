@@ -182,6 +182,8 @@ const components = {
                 color: mode('#ffffff', colors.brand.dark)(props),
                 _hover: {
                     bg: mode(colors.brand.accentDark, colors.brand.neonDark)(props),
+                    // Keep the text color: the global `a:hover` rule would otherwise paint it with the accent color.
+                    color: '#ffffff',
                 },
             }),
             ghost: (props: any) => ({
