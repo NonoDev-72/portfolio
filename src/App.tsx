@@ -11,17 +11,17 @@ function App() {
   const { colorMode } = useColorMode()
 
   useEffect(() => {
-    
+
   }, [colorMode])
 
   return (
     <ChakraProvider theme={theme}>
       <Layout>
-        <LanguageProvider>
-          <ConfigProvider>
+        <ConfigProvider>
+          <LanguageProvider>
             <AppRoutes />
-          </ConfigProvider>
-        </LanguageProvider>
+          </LanguageProvider>
+        </ConfigProvider>
       </Layout>
     </ChakraProvider>
   )
