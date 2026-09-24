@@ -5,59 +5,19 @@ import {
 import { FaBriefcase } from "react-icons/fa";
 import { PiStudentBold } from "react-icons/pi";
 import { useTranslation } from "../commons/hooks/useTranslation";
+import { useConfig, getTimeline } from "../commons/context/ConfigContext";
 import BlueprintFrame from "./landing/BlueprintFrame";
 import Reveal from "./landing/Reveal";
 
-type TimelineItem = {
-    id: number;
-    title: string;
-    subtitle: string;
-    date: string;
-    icon: React.ElementType;
-    main?: boolean;
-    description: string;
-    caught: string[];
+const ICONS: Record<string, React.ElementType> = {
+    briefcase: FaBriefcase,
+    student: PiStudentBold,
 };
-
-const items: TimelineItem[] = [
-    {
-        id: 3,
-        title: "home.timeline.p2",
-        subtitle: "Indra Solutions",
-        date: "2023 — Actualidad",
-        icon: FaBriefcase,
-        main: true,
-        description: "timeline.description.indra",
-        caught: [
-            "Kotlin", "Java", "React", "JavaScript", "Clean architecture", "CI/CD", "GitLab",
-        ],
-    },
-    {
-        id: 2,
-        title: "home.timeline.p1",
-        subtitle: "H2TIC",
-        date: "2021 — 2023",
-        icon: FaBriefcase,
-        description: "timeline.description.h2tic",
-        caught: [
-            "Kotlin", "Java", "iOS", "Swift", "Backend", "Firebase", "Docker", "Git",
-        ],
-    },
-    {
-        id: 1,
-        title: "home.timeline.p1e",
-        subtitle: "I.E.S Oretania",
-        date: "2021 — 2023",
-        icon: PiStudentBold,
-        description: "timeline.description.iesoretania",
-        caught: [
-            "C", "C++", "C#", "Java", "JavaScript", "HTML", "CSS", "Unity", "PostgreSQL", "Git",
-        ],
-    },
-];
 
 const Timeline = () => {
     const { t } = useTranslation();
+    const { config } = useConfig();
+    const items = getTimeline(config);
     const divider = useColorModeValue('brand.divider', 'brand.dividerDark');
     const accent = useColorModeValue('brand.accent', 'brand.neon');
 
@@ -90,7 +50,7 @@ const Timeline = () => {
                                                     justify="center"
                                                     color={accent}
                                                 >
-                                                    <Icon as={item.icon} boxSize={5} />
+                                                    <Icon as={ICONS[item.icon ?? 'briefcase'] ?? FaBriefcase} boxSize={5} />
                                                 </Flex>
                                                 <Box flex={1} minW={0}>
                                                     <Flex align="baseline" gap={3} flexWrap="wrap">
@@ -104,7 +64,7 @@ const Timeline = () => {
                                                         )}
                                                     </Flex>
                                                     <Text mt={1} fontSize="14px" opacity={0.65}>
-                                                        {item.subtitle} · {item.date}
+                                                        {item.subtitle} · {t(item.date)}
                                                     </Text>
                                                 </Box>
                                             </Flex>

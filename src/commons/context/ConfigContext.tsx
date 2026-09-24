@@ -46,6 +46,62 @@ export const getStats = (config: AppManagerConfig | null): Stat[] => {
     return Array.isArray(stats) && stats.length ? stats : DEFAULT_STATS;
 };
 
+export type TimelineItem = {
+    id: number;
+    title: string;
+    subtitle: string;
+    date: string;
+    icon?: 'briefcase' | 'student';
+    main?: boolean;
+    description: string;
+    caught: string[];
+    order?: number;
+};
+
+const DEFAULT_TIMELINE: TimelineItem[] = [
+    {
+        id: 3,
+        title: 'home.timeline.p2',
+        subtitle: 'Indra Solutions',
+        date: '2023 — Actualidad',
+        icon: 'briefcase',
+        main: true,
+        description: 'timeline.description.indra',
+        caught: ['Kotlin', 'Java', 'React', 'JavaScript', 'Clean architecture', 'CI/CD', 'GitLab'],
+        order: 1,
+    },
+    {
+        id: 2,
+        title: 'home.timeline.p1',
+        subtitle: 'H2TIC',
+        date: '2021 — 2023',
+        icon: 'briefcase',
+        description: 'timeline.description.h2tic',
+        caught: ['Kotlin', 'Java', 'iOS', 'Swift', 'Backend', 'Firebase', 'Docker', 'Git'],
+        order: 2,
+    },
+    {
+        id: 1,
+        title: 'home.timeline.p1e',
+        subtitle: 'I.E.S Oretania',
+        date: '2021 — 2023',
+        icon: 'student',
+        description: 'timeline.description.iesoretania',
+        caught: ['C', 'C++', 'C#', 'Java', 'JavaScript', 'HTML', 'CSS', 'Unity', 'PostgreSQL', 'Git'],
+        order: 3,
+    },
+];
+
+// `timeline` config key: [{ "id": 3, "title": "home.timeline.p2", "subtitle": "Indra Solutions", "date": "2023 — Actualidad",
+// "icon": "briefcase" | "student", "main": true, "description": "timeline.description.indra", "caught": ["Kotlin", ...], "order": 1 }, ...].
+// `title`, `description` and `date` are passed through `t()`, so they can be literal keys or plain text. Falls back to the defaults if absent.
+export const getTimeline = (config: AppManagerConfig | null): TimelineItem[] => {
+    if (!config) return DEFAULT_TIMELINE;
+    const items = appManagerClient.getJSON<TimelineItem[]>(config, 'timeline', DEFAULT_TIMELINE);
+    if (!Array.isArray(items) || !items.length) return DEFAULT_TIMELINE;
+    return [...items].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+};
+
 const ConfigContext = createContext({
     appManagerClient: appManagerClient,
     isBlocked: (_section: string): boolean => false,
