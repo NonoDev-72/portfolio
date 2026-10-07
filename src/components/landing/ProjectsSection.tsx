@@ -73,7 +73,7 @@ const ProjectsSection = () => {
                                         {card.title}
                                     </Heading>
                                     <Text fontSize="14px" lineHeight="1.6" opacity={0.72}>
-                                        {card.description}
+                                        {t(card.description)}
                                     </Text>
                                     {card.stack && card.stack.length > 0 && (
                                         <Text fontSize="11px" letterSpacing=".08em" opacity={0.5} mt={3}>

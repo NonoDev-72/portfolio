@@ -20,7 +20,8 @@ export type Project = {
     order?: number;
 };
 
-export const getProjects = (config: AppManagerConfig | null): Project[] => {
+// `projects` config key: `description` is passed through `t()`, so it can be a literal key (e.g. "projects.description.foo") or plain text.
+export const getProjects =(config: AppManagerConfig | null): Project[] => {
     if (!config) return [];
     const projects = appManagerClient.getJSON<Project[]>(config, 'projects', []);
     return [...projects].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
