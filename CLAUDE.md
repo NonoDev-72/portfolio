@@ -25,7 +25,7 @@ Single-page React 19 + Vite + TypeScript app (Chakra UI v2, react-router v7) —
 
 **Remote config via App Manager** (`src/commons/context/ConfigContext.tsx`): on mount, `@expozcode/app-manager-sdk`'s `AppManagerClient` fetches a remote config. That config drives:
 - the maintenance flag: every route in `src/routes.tsx` renders `MaintenancePage` when `isBlocked(config, 'maintenance')` is true;
-- the project list: `getProjects(config)` reads the `projects` JSON key and sorts by `order`. Projects come from the remote config, not from the repo.
+- the project list: `getProjects(config)` reads the `projects` JSON key and sorts by `order`. Projects come from the remote config, not from the repo. A project's `description` is passed through `t()`, so in the manager it holds a literal key (e.g. `projects.description.foo`, defined in the literals) or plain text.
 - `AppRoutes` shows a spinner while loading. If the fetch fails, only `error` is set and the app then renders normally with empty config.
 
 **Literals come from App Manager**: `useTranslation()` (`src/commons/hooks/useTranslation.tsx`) reads `appManagerClient.getLiterals(config, language)` — flat dotted keys (`t('hero.kicker')`); arrays are indexed keys (`hero.roles.0`, `.1`, … read via `tList`). A missing key returns the key itself. `src/assets/i18n/{es,en}.json` are only the fallback when the remote fetch fails. `es` is the App Manager `default` locale, `en` the extra one. The language is stored in `localStorage['lang']` (default `es`).
